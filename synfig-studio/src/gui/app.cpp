@@ -331,6 +331,7 @@ synfig::Color studio::App::preview_background_color =
 	synfig::Color(0.742187, 0.742187, 0.742187, 1.000000);  //X11 Gray
 
 bool   studio::App::enable_mainwin_menubar = true;
+bool   studio::App::enable_mainwin_toolbar = true;
 String studio::App::ui_language ("os_LANG");
 long   studio::App::ui_handle_tooltip_flag(Duck::STRUCT_DEFAULT);
 
@@ -667,6 +668,11 @@ public:
 				value=strprintf("%i", (int)App::enable_mainwin_menubar);
 				return true;
 			}
+                        if(key=="enable_mainwin_toolbar")
+			{
+				value=strprintf("%i", (int)App::enable_mainwin_toolbar);
+				return true;
+			}
 			if(key=="ui_handle_tooltip_flag")
 			{
 				value=strprintf("%ld", (long)App::ui_handle_tooltip_flag);
@@ -840,6 +846,12 @@ public:
 				App::enable_mainwin_menubar = i;
 				return true;
 			}
+                        if(key=="enable_mainwin_toolbar")
+			{
+				int i(atoi(value.c_str()));
+				App::enable_mainwin_toolbar = i;
+				return true;
+			}
 			if(key=="ui_handle_tooltip_flag")
 			{
 				long l(atol(value.c_str()));
@@ -889,6 +901,8 @@ public:
 		ret.push_back("preview_background_color");
 		ret.push_back("use_render_done_sound");
 		ret.push_back("enable_mainwin_menubar");
+                ret.push_back("enable_mainwin_toolbar");
+                ret.push_back("enable_mainwin_toolbar");
 		ret.push_back("ui_handle_tooltip_flag");
 		ret.push_back("image_editor_path");
 
@@ -1536,6 +1550,7 @@ App::App(const synfig::String& basepath, int *argc, char ***argv):
 
 		// Set main window menu and toolbar
 		load_settings("pref.enable_mainwin_menubar");
+                load_settings("pref.enable_mainwin_toolbar");
 
 		load_settings("pref.default_background_layer_type");
 		load_settings("pref.default_background_layer_color");
@@ -2312,6 +2327,7 @@ App::restore_default_settings()
 
 	synfigapp::Main::settings().set_value("pref.default_background_layer_image", "");
 	synfigapp::Main::settings().set_value("pref.enable_mainwin_menubar",         "1");
+        synfigapp::Main::settings().set_value("pref.enable_mainwin_toolbar",         "1");
 	ostringstream temp;
 	temp << Duck::STRUCT_DEFAULT;
 	synfigapp::Main::settings().set_value("pref.ui_handle_tooltip_flag",         temp.str());
