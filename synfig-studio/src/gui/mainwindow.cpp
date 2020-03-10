@@ -47,6 +47,7 @@
 #include <gtkmm/box.h>
 
 #include <gtkmm/textview.h>
+#include <gtkmm-3.0/gtkmm/widget.h>
 
 #include "gui/widgets/widget_time.h"
 #include "gui/widgets/widget_vector.h"
@@ -110,7 +111,7 @@ MainWindow::MainWindow() :
 		vbox->pack_start(*menubar, false, false, 0);
 	}
         
-        Gtk::Widget* toolbar = App::ui_manager()->get_widget("/toolbar-main");
+        Gtk::Widget* toolbar = App::get_selected_canvas_view()->get_toolbar();
 	if (toolbar != NULL)
 	{
 		vbox->pack_start(*toolbar, false, false, 0);
@@ -257,7 +258,7 @@ MainWindow::toggle_show_menubar()
 void
 MainWindow::toggle_show_toolbar()
 {
-	Gtk::Widget* toolbar = App::ui_manager()->get_widget("/toolbar-main");
+	Gtk::Widget* toolbar = App::get_selected_canvas_view()->get_toolbar();
 
 	App::enable_mainwin_toolbar = !App::enable_mainwin_toolbar;
 

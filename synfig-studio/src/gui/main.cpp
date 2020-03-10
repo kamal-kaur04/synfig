@@ -26,7 +26,7 @@
 #ifdef USING_PCH
 #	include "pch.h"
 #else
-#ifdef HAVE_CONFIG_H 
+#ifdef HAVE_CONFIG_H
 #	include <config.h>
 #endif
 

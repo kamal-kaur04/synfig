@@ -254,6 +254,7 @@ public:
 	*/
 public:
 	WorkArea* get_work_area() const { return work_area; }
+        Gtk::Widget* get_toolbar() { return widget_display_bar; }
 
 private:
 	WorkArea *work_area;
@@ -321,6 +322,7 @@ private:
 	JackDial *jackdial;
 	Gtk::ToggleButton *jackbutton;
 	Widget_Time *offset_widget;
+        Gtk::Widget *widget_display_bar;
 	ToggleDucksDial toggleducksdial;
 	bool toggling_ducks_;
 	ResolutionDial resolutiondial;

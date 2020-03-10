@@ -668,11 +668,13 @@ public:
 				value=strprintf("%i", (int)App::enable_mainwin_menubar);
 				return true;
 			}
-                        if(key=="enable_mainwin_toolbar")
+                        
+                        if(key=="enable_mainwin_menubar")
 			{
 				value=strprintf("%i", (int)App::enable_mainwin_toolbar);
 				return true;
 			}
+                        
 			if(key=="ui_handle_tooltip_flag")
 			{
 				value=strprintf("%ld", (long)App::ui_handle_tooltip_flag);
@@ -901,7 +903,6 @@ public:
 		ret.push_back("preview_background_color");
 		ret.push_back("use_render_done_sound");
 		ret.push_back("enable_mainwin_menubar");
-                ret.push_back("enable_mainwin_toolbar");
                 ret.push_back("enable_mainwin_toolbar");
 		ret.push_back("ui_handle_tooltip_flag");
 		ret.push_back("image_editor_path");
